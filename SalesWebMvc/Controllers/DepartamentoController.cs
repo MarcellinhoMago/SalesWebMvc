@@ -22,7 +22,7 @@ namespace SalesWebMvc.Controllers
         // GET: Departamento
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Department.ToListAsync());
+            return View(await _context.Departamento.ToListAsync());
         }
 
         // GET: Departamento/Details/5
@@ -33,7 +33,7 @@ namespace SalesWebMvc.Controllers
                 return NotFound();
             }
 
-            var departamento = await _context.Department
+            var departamento = await _context.Departamento
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (departamento == null)
             {
@@ -73,7 +73,7 @@ namespace SalesWebMvc.Controllers
                 return NotFound();
             }
 
-            var departamento = await _context.Department.FindAsync(id);
+            var departamento = await _context.Departamento.FindAsync(id);
             if (departamento == null)
             {
                 return NotFound();
@@ -124,7 +124,7 @@ namespace SalesWebMvc.Controllers
                 return NotFound();
             }
 
-            var departamento = await _context.Department
+            var departamento = await _context.Departamento
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (departamento == null)
             {
@@ -139,15 +139,15 @@ namespace SalesWebMvc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var departamento = await _context.Department.FindAsync(id);
-            _context.Department.Remove(departamento);
+            var departamento = await _context.Departamento.FindAsync(id);
+            _context.Departamento.Remove(departamento);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool DepartamentoExists(int id)
         {
-            return _context.Department.Any(e => e.Id == id);
+            return _context.Departamento.Any(e => e.Id == id);
         }
     }
 }
